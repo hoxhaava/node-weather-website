@@ -1,7 +1,7 @@
 const request = require('postman-request')
 
 const geocode = (address, callback) => {
-    const url = 'http://api.positionstack.com/v1/forward?access_key=d4221921d750a2998b1775cabf9138df&query=' + encodeURIComponent(address) + '&limit=1'
+    const url = process.env.POSITION_STACK_URL + encodeURIComponent(address) + '&limit=1'
     request({ url, json: true }, (error, {body}) => {
         if (error) {
             callback('Unable to connect to location services.', undefined)
